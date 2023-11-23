@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Counter</title>
+  <style>
+    :root {
+      --text: rgb(5, 6, 5);
+      --background: rgb(227, 232, 231);
+      --primary: rgb(166, 177, 181);
+      --secondary: rgb(227, 222, 223);
+      --accent: rgb(133, 117, 111);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      color: var(--text);
+      background-color: var(--background);
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 49px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: var(--secondary);
+      color: var(--text);
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    }
+
+    .btn.clicked {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .counter {
+      font-size: 24px;
+      margin-top: 10px;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome</h1>
+    <div>
+      <button class="btn" id="counterBtn">Click Me</button>
+      <span class="counter">0</span>
+    </div>
+  </div>
+
+  <script>
+    let count = 0;
+    const counterBtn = document.getElementById('counterBtn');
+    const counterDisplay = document.querySelector('.counter');
+
+    counterBtn.addEventListener('click', () => {
+      count++;
+      counterDisplay.textContent = count;
+
+      counterBtn.classList.add('clicked');
+      setTimeout(() => {
+        counterBtn.classList.remove('clicked');
+      }, 300);
+    });
+  </script>
+</body>
+</html>
